@@ -1,0 +1,33 @@
+@(list:Seq[Carta])
+ 
+@main("Lista Cartas") {
+<body>
+<div id="fundo">
+    <h1>Lista de Cartinhas - NATAL 2018</h1>
+    <table>
+        <tr>
+           <td>NOME</td>
+           <td>SEXO</td>
+           <td>IDADE</td>
+           <td>TAMANHO ROUPA</td>
+           <td>TAMANHO SAPATO</td>
+           <td>PEDIDO</td>
+        </tr> 
+    @for(t <- list) {
+        <tr>
+        <td>@t.id</td>
+           <td>@t.nome</td>
+           <td>@t.genero</td>
+           <td>@t.idade</td>
+           <td>@t.tamRoupa</td>
+           <td>@t.tamSap</td>
+            <td> <a href=@(routes.CartaController.formup)> PRESENTEAR! <a> </td>
+        </tr> 
+    }
+    </table>
+    
+    <a href=@(routes.JogoController.formcarta)>Cadastrar</a>
+    
+</div>
+</body>
+}
