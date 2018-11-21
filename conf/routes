@@ -5,18 +5,9 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-GET     /disciplina                controllers.DisciplinaController.lista
-GET     /filmes                      controllers.FilmeController.lista
-POST     /filme                   controllers.FilmeinController.create
-POST     /jogos                   controllers.JogoController.create
-POST     /jogos/update                   controllers.JogoController.update
-POST     /jogos/delete                   controllers.JogoController.delete
-GET     /jogo/delete                   controllers.JogoController.fordel
-GET     /jogo                   controllers.JogoController.lista
-GET     /jogo/form            controllers.JogoController.formjogo
-GET     /jogo/update            controllers.JogoController.formup
-GET     /filme/form            controllers.FilmeinController.formfilm
-GET     /jogo/info/:id        controllers.JogoController.info(id: Int)
+POST     /cartas                  controllers.JogoController.create
+GET     /carta                   controllers.JogoController.lista
+GET     /carta/form            controllers.JogoController.formcarta
 
 GET     /usuario                    controllers.UsuarioController.form
 POST    /usuario                    controllers.UsuarioController.cadastro
