@@ -1,0 +1,24 @@
+@(dForm: Form[Carta])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@if(dForm.hasGlobalErrors) {
+  <ul>
+  @for(error <- dForm.globalErrors) {
+    <li>@error.format</li>
+  }
+  </ul>
+}
+
+@import helper._
+
+@helper.form(action = routes.CartaController.create()) {
+  <!-- CROSS-SITE REQUEST FORGERY -->
+  @CSRF.formField                     
+  @helper.inputText(dForm("nome")) 
+  @helper.inputText(dForm("sexo")) 
+  @helper.inputInteger(dForm("idade")) 
+  @helper.inputInteger(dForm("tamRoupa")) 
+  @helper.inputInteger(dForm("tamSap")) 
+  @helper.inputInteger(dForm("pedido")) 
+  @helper.inputInteger(dForm("resp")) 
+  <button type="submit">Send</button>
+}

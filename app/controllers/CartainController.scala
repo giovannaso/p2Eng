@@ -28,6 +28,7 @@ class cartainController @Inject()(db: Database, cc: ControllerComponents)
             "tamRoupa" -> text,
             "tamSap" -> text,
             "pedido" -> text,
+            "resp" -> text,
         )(carta.apply)(carta.unapply)
     )
   
@@ -57,9 +58,9 @@ class cartainController @Inject()(db: Database, cc: ControllerComponents)
       select 
          * 
       from 
-         cartas 
+         carta 
       order by 
-          cartas.nome 
+          carta.nome 
       limit 10""")
       while (res.next()) {
         list.+=(carta(//res.getInt(1)

@@ -12,16 +12,17 @@
            <td>TAMANHO ROUPA</td>
            <td>TAMANHO SAPATO</td>
            <td>PEDIDO</td>
+           <td>Padrinho</td>
         </tr> 
     @for(t <- list) {
         <tr>
-        <td>@t.id</td>
            <td>@t.nome</td>
-           <td>@t.genero</td>
+           <td>@t.sexo</td>
            <td>@t.idade</td>
            <td>@t.tamRoupa</td>
            <td>@t.tamSap</td>
-            <td> <a href=@(routes.CartaController.formup)> PRESENTEAR! <a> </td>
+           <td>@t.pedido</td>
+           <td>@t.resp</td>
         </tr> 
     }
     </table>

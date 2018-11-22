@@ -27,7 +27,8 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
             "tamRoupa" -> text,
             "tamSap" -> text,
             "pedido" -> text,
-        )(carta.apply)(carta.unapply)
+            "resp" -> text,
+        )(Carta.apply)(Carta.unapply)
     )
   
   def create = Action {implicit request =>
@@ -36,13 +37,13 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
         BadRequest(views.html.cartaForm(formWithErrors))
       },
       carta => {
-        cartaDAO.create(db,carta)
+        CartaDAO.create(db,carta)
         Redirect("/carta")
       }
     )
   }
   
-  
+  /** 
   def delete = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
@@ -50,7 +51,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
         BadRequest(views.html.cartaDel(formWithErrors))
       },
       carta => {
-        cartaDAO.delete(db,carta)
+        CartaDAO.delete(db,carta)
         Redirect("/carta")
       }
     )
@@ -73,11 +74,12 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     val carta = cartaDAO.getcarta(db,id)
     Ok(views.html.info(carta))
   }
-  
+  */
   def formcarta = Action {implicit request =>
     Ok(views.html.cartaForm(form))
   }
   
+  /**
   def formup = Action {implicit request =>
     Ok(views.html.cartaupdate(form))
   }
@@ -85,10 +87,10 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   def fordel = Action {implicit request =>
     Ok(views.html.cartaDel(form))
   }
+  */
   
    def lista = Action {
-    val list = MutableList[carta]()
-    //conn representa a conexao de fato com o bd
+    val list = MutableList[Carta]()
     db.withConnection { conn =>
       val stm = conn.createStatement()
       val res = stm.executeQuery("""
@@ -100,18 +102,22 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
           carta.nome 
       limit 10""")
       while (res.next()) {
-            list.+=(//res.getInt(1)
+            list.+=(Carta(//res.getInt(1)
               res.getString(2)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)
                ,res.getString(6)
-               ,res.getString(7)))
+               ,res.getString(7)
+               ,res.getString(8)))
           }
     }
  
-    Ok(views.html.carta(list))
+    Ok(views.html.listaCriancas(list))
   }
   
-  
+  def index() = Action { implicit request: Request[AnyContent] =>
+    val x = "perdi."
+    Ok(views.html.index(x))
+  }
 }
