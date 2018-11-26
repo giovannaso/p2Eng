@@ -5,8 +5,8 @@ import play.api._
 import play.api.mvc._
 import play.api.db.Database
 import scala.collection.mutable.MutableList
-import models.cartaDAO
-import models.carta
+import models.CartaDAO
+import models.Carta
 import play.api.data._
 import play.api.data.Forms._
 import play.api.data.format.Formats._
@@ -16,10 +16,10 @@ import play.api.data.format.Formats._
  * application's home page.
  */
 @Singleton
-class cartainController @Inject()(db: Database, cc: ControllerComponents) 
+class CartainController @Inject()(db: Database, cc: ControllerComponents) 
   extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
-  val form: Form[carta] = Form (
+  val form: Form[Carta] = Form (
         mapping(
            // "id" -> number,
             "nome" -> text,
@@ -29,16 +29,16 @@ class cartainController @Inject()(db: Database, cc: ControllerComponents)
             "tamSap" -> text,
             "pedido" -> text,
             "resp" -> text,
-        )(carta.apply)(carta.unapply)
+        )(Carta.apply)(Carta.unapply)
     )
   
   def create = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
-        BadRequest(views.html.filmForm(formWithErrors))
+        BadRequest(views.html.cartaForm(formWithErrors))
       },
       carta => {
-        cartaDAO.create(db,carta)
+        CartaDAO.create(db,carta)
         Redirect("/cartas")
       }
     )
@@ -50,7 +50,7 @@ class cartainController @Inject()(db: Database, cc: ControllerComponents)
   
   def lista = Action {
  
-    val list = MutableList[carta]()
+    val list = MutableList[Carta]()
     //conn representa a conexao de fato com o bd
     db.withConnection { conn =>
       val stm = conn.createStatement()
@@ -63,17 +63,18 @@ class cartainController @Inject()(db: Database, cc: ControllerComponents)
           carta.nome 
       limit 10""")
       while (res.next()) {
-        list.+=(carta(//res.getInt(1)
+        list.+=(Carta(//res.getInt(1)
               res.getString(2)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)
                ,res.getString(6)
-               ,res.getString(7)))
+               ,res.getString(7)
+               ,res.getString(8)))
       }
     }
  
-    Ok(views.html.carta(list))
+    Ok(views.html.listaCriancas(list))
   }
   
   

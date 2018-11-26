@@ -12,7 +12,7 @@ object CartaDAO{
             if(res.next())
                 Carta(res.getString(2),res.getString(3),res.getInt(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8))
             else
-                Carta("","","",0,"","","","")
+                Carta("","",0,"","","","")
         }
     }
     
@@ -51,7 +51,8 @@ object CartaDAO{
                ,res.getInt(4)
                ,res.getString(5)
                ,res.getString(6)
-               ,res.getString(7)))
+               ,res.getString(7)
+               ,res.getString(8)))
           }
     }
         list

@@ -116,8 +116,9 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     Ok(views.html.listaCriancas(list))
   }
   
-  def index() = Action { implicit request: Request[AnyContent] =>
-    val x = "perdi."
-    Ok(views.html.index(x))
-  }
+  
+  
+  
+  
 }
+ 

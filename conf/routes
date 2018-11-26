@@ -4,19 +4,18 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.cartaController.index
-POST     /cartas                  controllers.cartaController.create
-GET     /carta                   controllers.cartaController.lista
-GET     /carta/form            controllers.cartaController.formcarta
+GET     /                           controllers.HomeController.index
+POST     /cartas                  controllers.CartaController.create
+GET     /carta                   controllers.CartaController.lista
+GET     /carta/form            controllers.CartaController.formcarta
 
-GET     /usuario                    controllers.UsuarioController.form
-POST    /usuario                    controllers.UsuarioController.cadastro
+# GET     /usuario                    controllers.CartaController.form
+# POST    /usuario                    controllers.CartaController.cadastro
 
 GET     /login                      controllers.LoginController.form
 POST    /login                      controllers.LoginController.auth
 POST    /logout                     controllers.LoginController.logout
 
-GET     /sucesso                    controllers.HomeController.sucesso 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

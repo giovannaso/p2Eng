@@ -10,10 +10,6 @@ import models.Login
 import play.api.data._
 import play.api.data.Forms._
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
 @Singleton
 class LoginController @Inject()(db: Database, cc: ControllerComponents) 
   extends AbstractController(cc) with play.api.i18n.I18nSupport {
@@ -29,7 +25,6 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   def auth = Action {implicit request =>
-    import play.api.Logger
     loginForm.bindFromRequest.fold(
       formWithErrors => {
         BadRequest(views.html.loginForm(formWithErrors))
@@ -37,9 +32,7 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
       login => {
         val estaLogado = UsuarioDAO.autenticar(db,login)
         if(estaLogado){
-           val sess = request.session + ("user" -> login.email)
-           Logger.debug(sess.toString())
-           Redirect("/").withSession(sess)
+           Redirect("/").withSession("cartas" -> login.email)   
         }else{
            Redirect("/login")
         }
@@ -48,8 +41,6 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   def logout = Action {implicit request =>
-    Redirect("/").withSession(request.session - "usuario")
+    Redirect("/").withSession(request.session - "cartas")
   }
-
-  
 }
