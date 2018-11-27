@@ -4,8 +4,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-GET     /home                           controllers.HomeController.home
+GET     /                          controllers.HomeController.index
 POST     /cartas                  controllers.CartaController.create
 GET     /carta                   controllers.CartaController.lista
 GET     /carta/form            controllers.CartaController.formcarta

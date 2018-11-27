@@ -1,5 +1,5 @@
 @()
- 
+
 @main("Index") {
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,12 @@
 		<header>
 			<nav>
 				<div class="logo">
-					<a href="#">Natal Solidário 2018</a>
+					 <a href=>Natal Solidário 2018</a>
 				</div>
 				<div class="menu">
 					<ul>
-						<li><a href="#">Cartas</a></li>
-						<li><a href="#">Login</a></li>
+						<li> <a href=@(routes.CartaController.formcarta)>Cartas</a></li>
+						<li> <a href=@(routes.LoginController.form)>Login</a></li>
 					</ul>
 				</div>
 			</nav>

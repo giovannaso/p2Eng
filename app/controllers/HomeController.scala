@@ -8,13 +8,9 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
- 
+
   def index = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index("a"))
-  }
-  
-  def home = Action {implicit request =>
-    Ok(views.html.home())
+    Ok(views.html.index())
   }
 
 }

@@ -21,13 +21,13 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
     )(Login.apply)(Login.unapply))
   
   def form = Action {implicit request =>
-    Ok(views.html.loginForm(loginForm))
+    Ok(views.html.login(loginForm))
   }
   
   def auth = Action {implicit request =>
     loginForm.bindFromRequest.fold(
       formWithErrors => {
-        BadRequest(views.html.loginForm(formWithErrors))
+        BadRequest(views.html.login(formWithErrors))
       },
       login => {
         val estaLogado = UsuarioDAO.autenticar(db,login)
@@ -49,4 +49,6 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
   def logout = Action {implicit request =>
     Redirect("/").withSession(request.session - "cartas")
   }
+  
 }
+
