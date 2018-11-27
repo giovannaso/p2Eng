@@ -151,7 +151,3 @@ color: black;
 font-family: 'Ranga', cursive;
 }
 
-.input[type="text"] {
-    border: 2px dashed #D1C7AC;
-    width: 230px;
-}
