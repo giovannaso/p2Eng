@@ -31,15 +31,21 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
       },
       login => {
         val estaLogado = UsuarioDAO.autenticar(db,login)
+       // val confAdm = UsuarioDAO.confAdm(db,login)
         if(estaLogado){
-           Redirect("/").withSession("cartas" -> login.email)   
-        }else{
-           Redirect("/login")
+          if(login.email == "admin@carta.com"){
+           Redirect("/carta/form").withSession("cartas" -> login.email)
+           }else{
+             Redirect("/carta").withSession("cartas" -> login.email)
+           }
         }
+        else{
+           Redirect("/login")
+      }
       }
     )
   }
-  
+
   def logout = Action {implicit request =>
     Redirect("/").withSession(request.session - "cartas")
   }

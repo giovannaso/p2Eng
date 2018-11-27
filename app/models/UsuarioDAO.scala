@@ -24,4 +24,16 @@ object UsuarioDAO{
         }
     }
     
+   /** def confAdm(db: Database, login: Login): Boolean ={
+        db.withConnection{conn =>
+            val ps = conn.prepareStatement("select * from usuario where email=? and senha=?")
+            ps.setString(1,login.email)
+            ps.setString(2,login.senha)
+            val rs = ps.executeQuery()
+            rs.next()
+            if(login.email == "admin@carta.com"){
+               return true
+            }
+        }
+    } **/
 }
