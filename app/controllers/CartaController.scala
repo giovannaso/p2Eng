@@ -18,15 +18,15 @@ import play.api.data.Forms._
 class CartaController @Inject()(db: Database, cc: ControllerComponents) 
   extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
-  val form: Form[(String,String,Int,String,Int,String,String)] = Form (
+  val form: Form[(String,String,Int,String,String,String,String)] = Form (
         mapping(
             "nome" -> text,
             "sexo" -> text,
             "idade" -> number,
             "tamRoupa" -> text,
-            "tamSap" -> number,
+            "tamSap" -> text,
             "pedido" -> text,
-            "resp" -> text,
+            "resp" -> text
         )(Carta.applyCarta)(Carta.unapplyCarta)
     )
   
@@ -107,7 +107,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)
-               ,res.getInt(6)
+               ,res.getString(6)
                ,res.getString(7)
                ,res.getString(8)))
           }
