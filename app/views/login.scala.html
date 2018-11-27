@@ -20,14 +20,18 @@
 					</ul>
 				</div>
 			</nav>
-			<div class="center">
+			<div id="center">
 			  <div>
 				<p>
 					@helper.form(action = routes.LoginController.auth()) {
           <!-- CROSS-SITE REQUEST FORGERY -->
           @CSRF.formField                     
+         <div class="input">
           @helper.inputText(dForm("email")) 
+          </div>
+          <div class="input">
           @helper.inputPassword(dForm("senha")) 
+          </div>
   <button type="submit">Send</button>
   
           @if(dForm.hasGlobalErrors) {
