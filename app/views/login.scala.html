@@ -1,19 +1,47 @@
 @(dForm: Form[Login])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
-
-@if(dForm.hasGlobalErrors) {
-  <ul>
-  @for(error <- dForm.globalErrors) {
-    <li>@error.format</li>
-  }
-  </ul>
-}
-
 @import helper._
-
-@helper.form(action = routes.LoginController.auth()) {
-  <!-- CROSS-SITE REQUEST FORGERY -->
-  @CSRF.formField                     
-  @helper.inputText(dForm("email")) 
-  @helper.inputPassword(dForm("senha")) 
+@main("Natal Solidário 2018 - Aquecendo Corações") {
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="logo">
+					<a href="#">Natal Solidário 2018</a>
+				</div>
+				<div class="menu">
+					<ul>
+						<li><a href=></a></li>
+						<li><a href=@(routes.HomeController.index)>Voltar</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="login">
+			  <div>
+				<p>
+					@helper.form(action = routes.LoginController.auth()) {
+          <!-- CROSS-SITE REQUEST FORGERY -->
+          @CSRF.formField                     
+          @helper.inputText(dForm("email")) 
+          @helper.inputPassword(dForm("senha")) 
   <button type="submit">Send</button>
+  
+          @if(dForm.hasGlobalErrors) {
+          <ul>
+          @for(error <- dForm.globalErrors) {
+            <li>@error.format</li>
+          }
+          </ul>
+        }
+}
+				</p>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>
 }
