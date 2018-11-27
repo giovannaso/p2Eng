@@ -1,31 +1,110 @@
-h1{
-    color:purple;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-size: 56px;
-    
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Ranga');
+html, body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
-h2{
-    color:red;
-    font-family: fantasy;
+body{
+	background-color: #ecf0f1;
 }
 
-table {
-    border-collapse: collapse;
-    width: 30%;
+header{
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/heart-sunshine.jpg) no-repeat 50% 50%;
+	background-size:cover;
 }
 
-th, td {
-    text-align: left;
-    padding: 8px;
-    color: black;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+.header-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+.header-text p{
+	font-family: 'Ranga', cursive;
+	color: #2ecc71;
+	font-size: 3em;
+}
 
+.content{
+	padding: 50px;
+	width: 40%;
+	margin: 10px auto;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+	float: left;	
+	color: #2c3e50;
+	font-family: 'Ranga', cursive;
+}
 
-.fundo {
+.text-body{
+	font-size: 2em;
+	word-spacing: 3px;
+	line-height: 70px;
+}
+
+.logo a{
+	color: #fff;
+	font-family: 'Pacifico', cursive;
+	font-weight: bold;
+	font-size: 24px;
+	text-decoration: none;
+	position: fixed;
+	float: left;
+	margin: 16px 36px;
+}
+
+nav{
+	position: fixed;
+	width: 100%;
+	transition: 1s;
+}
+
+nav ul{
+	list-style: none;
+	overflow: hidden;
+	background: rgba(0,0,0,0);
+	color: #fff;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	transition: 1s;
+}
+
+nav.black ul{
+	background: #000;
+}
+
+nav ul li{
+	display: inline-block;
+	padding: 20px;
+	transition: 0.5s;
+	font-family: 'Ranga', cursive;
+	margin-right: 20px;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 30px;
+	transition: 0.5s;
+}
+
+nav ul li:hover{
+	background-color: #e74c3c;
+}
+
+nav ul li:hover > a{
+	color: #2ecc71;
+}
+
+.tabela {
   display: table;
   width: 100%;
   height: 100%;
