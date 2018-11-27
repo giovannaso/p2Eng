@@ -43,7 +43,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     )
   }
   
-  /** 
+  
   def delete = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
