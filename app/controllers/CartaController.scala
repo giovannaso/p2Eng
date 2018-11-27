@@ -18,26 +18,26 @@ import play.api.data.Forms._
 class CartaController @Inject()(db: Database, cc: ControllerComponents) 
   extends AbstractController(cc) with play.api.i18n.I18nSupport {
   
-  val form: Form[Carta] = Form (
+  val form: Form[(String,String,Int,String,Int,String,String)] = Form (
         mapping(
-            "id" -> number,
             "nome" -> text,
             "sexo" -> text,
             "idade" -> number,
             "tamRoupa" -> text,
-            "tamSap" -> text,
+            "tamSap" -> number,
             "pedido" -> text,
             "resp" -> text,
-        )(Carta.apply)(Carta.unapply)
+        )(Carta.applyCarta)(Carta.unapplyCarta)
     )
   
-  def create = Action {implicit request =>
+   def create = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
+        println(formWithErrors)
         BadRequest(views.html.cartaForm(formWithErrors))
       },
       carta => {
-        CartaDAO.create(db,carta)
+        CartaDAO.create(db,Carta.criarCarta(carta._1,carta._2,carta._3,carta._4,carta._5,carta._6,carta._7))
         Redirect("/carta")
       }
     )
@@ -107,7 +107,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)
-               ,res.getString(6)
+               ,res.getInt(6)
                ,res.getString(7)
                ,res.getString(8)))
           }
