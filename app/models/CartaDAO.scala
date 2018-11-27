@@ -30,6 +30,14 @@ object CartaDAO{
         }
     }
     
+     def delete(db: Database, c: Delete): Unit = {
+        db.withConnection{ conn =>
+            val ps = conn.prepareStatement("delete from cartas where id= ?")
+            ps.setInt(1,c.id)
+            ps.execute()
+        }
+    }
+    
     def listagem(db: Database): MutableList[Carta] = {
     
         val list = MutableList[Carta]()

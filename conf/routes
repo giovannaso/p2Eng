@@ -8,6 +8,10 @@ GET     /                          controllers.HomeController.index
 POST     /cartas                  controllers.CartaController.create
 GET     /carta                   controllers.CartaController.lista
 GET     /carta/form            controllers.CartaController.formcarta
+GET     /carta/update                controllers.CartaController.formUp
+GET     /carta/delete                controllers.CartaController.formDel
+POST    /CartaUp                    controllers.GamesController.update
+POST    /CartaDel                   controllers.GamesController.delete
 
 # GET     /usuario                    controllers.CartaController.form
 # POST    /usuario                    controllers.CartaController.cadastro

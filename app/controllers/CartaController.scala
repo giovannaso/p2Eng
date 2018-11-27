@@ -7,6 +7,8 @@ import play.api.db.Database
 import scala.collection.mutable.MutableList
 import models.CartaDAO
 import models.Carta
+import models.Update
+import models.Delete
 import play.api.data._
 import play.api.data.Forms._
 
@@ -30,6 +32,13 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
         )(Carta.applyCarta)(Carta.unapplyCarta)
     )
   
+  val delForm: Form[Delete] = Form (
+        mapping(
+            "id" -> number
+        )(Delete.apply)(Delete.unapply)
+    )
+  
+  
    def create = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
@@ -44,19 +53,21 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   
-  def delete = Action {implicit request =>
-    form.bindFromRequest.fold(
+ def delete = Action {implicit request =>
+    delForm.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)
         BadRequest(views.html.cartaDel(formWithErrors))
       },
-      carta => {
-        CartaDAO.delete(db,carta)
-        Redirect("/carta")
+      delete => {
+        CartaDAO.delete(db,delete)
+        Redirect("/cartas")
       }
     )
   }
   
+  
+    /**
   def update = Action {implicit request =>
     form.bindFromRequest.fold(
       formWithErrors => {
@@ -75,6 +86,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     Ok(views.html.info(carta))
   }
   */
+ 
   def formcarta = Action {implicit request =>
     Ok(views.html.cartaForm(form))
   }
