@@ -21,7 +21,7 @@ class CartainController @Inject()(db: Database, cc: ControllerComponents)
   
   val form: Form[Carta] = Form (
         mapping(
-           // "id" -> number,
+            "id" -> number,
             "nome" -> text,
             "sexo" -> text,
             "idade" -> number,
@@ -51,7 +51,6 @@ class CartainController @Inject()(db: Database, cc: ControllerComponents)
   def lista = Action {
  
     val list = MutableList[Carta]()
-    //conn representa a conexao de fato com o bd
     db.withConnection { conn =>
       val stm = conn.createStatement()
       val res = stm.executeQuery("""
@@ -63,8 +62,8 @@ class CartainController @Inject()(db: Database, cc: ControllerComponents)
           carta.nome 
       limit 10""")
       while (res.next()) {
-        list.+=(Carta(//res.getInt(1)
-              res.getString(2)
+        list.+=(Carta(res.getInt(1)
+              ,res.getString(2)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)

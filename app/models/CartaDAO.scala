@@ -10,15 +10,16 @@ object CartaDAO{
             ps.setInt(1,id)
             val res = ps.executeQuery()
             if(res.next())
-                Carta(res.getString(2),res.getString(3),res.getInt(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8))
+                Carta(res.getInt(1),res.getString(2),res.getString(3),res.getInt(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8))
             else
-                Carta("","",0,"","","","")
+                Carta(0,"","",0,"","","","")
         }
     }
     
     def create(db: Database, disc: Carta): Unit = {
         db.withConnection{ conn =>
             val ps = conn.prepareStatement("insert into carta(nome,sexo,idade,tamRoupa,tamSap,pedido,resp) values (?,?,?,?,?,?,?)")
+            ps.setInt(1,disc.id)
             ps.setString(2,disc.nome)
             ps.setString(3,disc.sexo)
             ps.setInt(4,disc.idade)
@@ -45,8 +46,8 @@ object CartaDAO{
           carta.nome 
       limit 10""")
       while (res.next()) {
-            list.+=(Carta(//res.getInt(1)
-              res.getString(2)
+            list.+=(Carta(res.getInt(1)
+              ,res.getString(2)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)

@@ -20,7 +20,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   
   val form: Form[Carta] = Form (
         mapping(
-           // "id" -> number,
+            "id" -> number,
             "nome" -> text,
             "sexo" -> text,
             "idade" -> number,
@@ -102,8 +102,8 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
           carta.nome 
       limit 10""")
       while (res.next()) {
-            list.+=(Carta(//res.getInt(1)
-              res.getString(2)
+            list.+=(Carta(res.getInt(1)
+              ,res.getString(2)
                ,res.getString(3)
                ,res.getInt(4)
                ,res.getString(5)
