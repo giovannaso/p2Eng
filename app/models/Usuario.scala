@@ -1,6 +1,8 @@
 package models
 
 case class Login(email: String, senha: String)
+case class upUsu(id: Int, nome: String, email: String, senha: String)
+case class DeleteUsu(id: Int)
 
 class Usuario(val _id: Int, val _nome: String, val _email: String, val _senha: String){
     def id = _id
@@ -13,12 +15,12 @@ class Usuario(val _id: Int, val _nome: String, val _email: String, val _senha: S
 }
 
 object Usuario{
-     def upUsu(id: Int, nome: String, email: String, senha: String): UpdateUsu = {
-        return new UpdateUsu(id,nome,email,senha)
+     def upUsu(id: Int, nome: String, email: String, senha: String): upUsu = {
+        return new upUsu(id,nome,email,senha)
     }
     
-    def delUsu(id: Int): Delete = {
-        return new Delete(id)
+    def delUsu(id: Int): DeleteUsu = {
+        return new DeleteUsu(id)
     }
     
     def apply(nome: String, email: String, senha: String): (String,String,String) = {

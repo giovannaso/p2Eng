@@ -25,7 +25,7 @@ object UsuarioDAO{
         }
     }
     
-    def updateUsu(db: Database, usu: UpdateUsu): Unit = {
+    def upUsu(db: Database, usu: upUsu): Unit = {
         db.withConnection{ conn =>
             val ps = conn.prepareStatement("update usuario set nome= ?, email= ?, senha= ? where id= ?")
             ps.setString(1,usu.nome)
@@ -36,7 +36,7 @@ object UsuarioDAO{
         }
     }
     
-    def deleteUsu(db: Database, usu: Delete): Unit = {
+    def deleteUsu(db: Database, usu: DeleteUsu): Unit = {
         db.withConnection{ conn =>
             val ps = conn.prepareStatement("delete from usuario where id= ?")
             ps.setInt(1,usu.id)

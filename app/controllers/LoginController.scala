@@ -7,8 +7,8 @@ import play.api.db.Database
 import scala.collection.mutable.MutableList
 import models.UsuarioDAO
 import models.Login
-import models.UpUsu
-import models.Delete
+import models.upUsu
+import models.DeleteUsu
 import play.api.data._
 import play.api.data.Forms._
 
@@ -22,18 +22,18 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
             "senha" -> text
     )(Login.apply)(Login.unapply))
     
-    val upForm: Form[UpdateUsu] = Form (
+    val upForm: Form[upUsu] = Form (
         mapping(
             "id" -> number,
             "nome" -> text,
             "email" -> text,
             "senha" -> text,
-        )(UpdateUsu.apply)(UpdateUsu.unapply))
+        )(upUsu.apply)(upUsu.unapply))
     
-    val delForm: Form[Delete] = Form (
+    val delForm: Form[DeleteUsu] = Form (
         mapping(
             "id" -> number
-        )(Delete.apply)(Delete.unapply))
+        )(DeleteUsu.apply)(DeleteUsu.unapply))
   
   
   def form = Action {implicit request =>
@@ -41,11 +41,11 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   def formUp = Action {implicit request =>
-    Ok(views.html.usuUp(upForm))
+    Ok(views.html.cadastrarUsu(upForm))
   }
   
   def formDel = Action {implicit request =>
-    Ok(views.html.usuDel(delForm))
+    Ok(views.html.delUsu(delForm))
   }
   
   def auth = Action {implicit request =>
@@ -72,10 +72,10 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
     upForm.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)
-        BadRequest(views.html.usuUp(formWithErrors))
+        BadRequest(views.html.cadastrarUsu(formWithErrors))
       },
-      updateUsu => {
-        UsuarioDAO.updateUsu(db,updateUsu)
+      upUsu => {
+        UsuarioDAO.upUsu(db,upUsu)
         Redirect("/")
       }
     )
@@ -85,10 +85,10 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
     delForm.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)
-        BadRequest(views.html.usuDel(formWithErrors))
+        BadRequest(views.html.delUsu(formWithErrors))
       },
       deleteUsu => {
-        GamesDAO.deleteUsu(db,deleteUsu)
+        UsuarioDAO.deleteUsu(db,deleteUsu)
         Redirect("/")
       }
     )
