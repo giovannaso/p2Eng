@@ -2,6 +2,7 @@ package models;
 import scala.collection.mutable.MutableList;
 import play.api.db.Database;
 
+
 object UsuarioDAO{
     
     def create(db: Database, usu: Usuario): Unit = {

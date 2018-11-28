@@ -7,6 +7,8 @@ import play.api.db.Database
 import scala.collection.mutable.MutableList
 import models.UsuarioDAO
 import models.Login
+import models.UpUsu
+import models.Delete
 import play.api.data._
 import play.api.data.Forms._
 

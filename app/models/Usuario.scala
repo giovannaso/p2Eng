@@ -13,12 +13,12 @@ class Usuario(val _id: Int, val _nome: String, val _email: String, val _senha: S
 }
 
 object Usuario{
-    def criarUsuarioId(id: Int, nome: String, email: String, senha: String) = {
-        new Usuario(id,nome,email,senha)
+     def upUsu(id: Int, nome: String, email: String, senha: String): UpdateUsu = {
+        return new UpdateUsu(id,nome,email,senha)
     }
     
-    def criarUsuario(nome: String, email: String, senha: String): Usuario = {
-        return new Usuario(0,nome,email,senha)
+    def delUsu(id: Int): Delete = {
+        return new Delete(id)
     }
     
     def apply(nome: String, email: String, senha: String): (String,String,String) = {
