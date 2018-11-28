@@ -49,13 +49,15 @@ Nela temos os seguintes campos:
     nome VARCHAR (60),
     email varchar(70) UNIQUE NOT NULL,
     senha varchar(80) NOT NULL
-);```
+);
+```
 
 Situações:
 Originalmente o campo ‘tamsap’ era do tipo INT mas tivemos problemas apply e modificamos para o tipo VARCHAR, para isso tentamos usar os comandos 
-``` alter table carta alter column tamsap VARCHAR ```
-```alter table carta modify column tamsap VARCHAR ```
-```alter table carta modify tamsap VARCHAR ```
+``` alter table carta alter column tamsap VARCHAR 
+    alter table carta modify column tamsap VARCHAR 
+    alter table carta modify tamsap VARCHAR 
+```
 Mas nenhum comando funcionou, decidimos utilizar o comando “drop table” e refazer a tabela.
 
 
