@@ -1,18 +1,47 @@
 @(dForm: Form[Delete])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
-
-@if(dForm.hasGlobalErrors) {
-  <ul>
-  @for(error <- dForm.globalErrors) {
-    <li>@error.format</li>
-  }
-  </ul>
-}
-
 @import helper._
-
-@helper.form(action = routes.CartaController.delete()) {
-  <!-- CROSS-SITE REQUEST FORGERY -->
-  @CSRF.formField
-  @helper.inputText(dForm("id"))
-  <button type="submit">Send</button>
+@main("Deletar Carta") {
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="logo">
+					<a href=@(routes.HomeController.index)>Natal Solidário 2018</a>
+				</div>
+				<div class="menu">
+					<ul>
+						<li><a href=@(routes.HomeController.index)>Cadastre-se </a></li>
+						<li><a href=@(routes.HomeController.index)>Voltar</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div id="center">
+			  <div>
+				<p>
+					@helper.form(action = routes.CartaController.delete()) {
+  
+          @CSRF.formField
+          @helper.inputText(dForm("id"))
+          <button type="submit">Send</button>
+          
+           @if(dForm.hasGlobalErrors) {
+          <ul>
+            @for(error <- dForm.globalErrors) {
+              <li>@error.format</li>
+            }
+            </ul>
+          }  
 }
+				</p>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>
+}
+
