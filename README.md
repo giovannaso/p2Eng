@@ -47,7 +47,7 @@ Nela temos os seguintes campos:
     CREATE TABLE usuario(
     id serial PRIMARY KEY
     nome VARCHAR (60),
-    email varchar(70) UNIQUE NOT NULL,
+    email varchar(70) UNIQUE NOT NULL, 
     senha varchar(80) NOT NULL
 );
 ```
