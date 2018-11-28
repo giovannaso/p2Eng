@@ -155,11 +155,13 @@ table {
   text-align: center;
   color: white;
   background-position: 30% 45%;
-  background-color: #D0CFC1;
+  background-color: rgba(52, 152, 219,0.5);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+   border-radius: 2em;
+
 }
 
 .input{
