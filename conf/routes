@@ -5,6 +5,7 @@
 
 # An example controller showing a sample home page
 GET     /                          controllers.HomeController.index
+GET     /adm                          controllers.HomeController.adm
 POST     /cartas                  controllers.CartaController.create
 GET     /carta                   controllers.CartaController.lista
 GET     /carta/form            controllers.CartaController.formcarta

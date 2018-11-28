@@ -34,7 +34,7 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
        // val confAdm = UsuarioDAO.confAdm(db,login)
         if(estaLogado){
           if(login.email == "admin@carta.com"){
-           Redirect("/carta/form").withSession("cartas" -> login.email)
+           Redirect("/adm").withSession("cartas" -> login.email)
            }else{
              Redirect("/carta").withSession("cartas" -> login.email)
            }

@@ -1,0 +1,43 @@
+@()
+
+@main("Administrador - Natal Solidário 2018") {
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>cuck kk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/admin.css" />
+</head>
+<div class="fundo">
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="./index.html">Natal Solidário 2018</a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href=>Suas Cartas</a></li>
+                <li><a href=@(routes.HomeController.index)>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="link">
+        <div>
+            <ul>
+                <li><a href="#">Cadastrar usuário</a></li>
+                <li><a href="#">Cadastrar carta</a></li>
+                <li><a href="#">Apagar usuário</a></li>
+                <li><a href="#">Apagar carta</a></li>
+                <li><a href="#">Update carta</a></li>
+                <li><a href="#">Lista</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+}
