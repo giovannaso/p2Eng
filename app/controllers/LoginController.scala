@@ -19,9 +19,31 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
             "email" -> text,
             "senha" -> text
     )(Login.apply)(Login.unapply))
+    
+    val upForm: Form[UpdateUsu] = Form (
+        mapping(
+            "id" -> number,
+            "nome" -> text,
+            "email" -> text,
+            "senha" -> text,
+        )(UpdateUsu.apply)(UpdateUsu.unapply))
+    
+    val delForm: Form[Delete] = Form (
+        mapping(
+            "id" -> number
+        )(Delete.apply)(Delete.unapply))
+  
   
   def form = Action {implicit request =>
     Ok(views.html.login(loginForm))
+  }
+  
+  def formUp = Action {implicit request =>
+    Ok(views.html.usuUp(upForm))
+  }
+  
+  def formDel = Action {implicit request =>
+    Ok(views.html.usuDel(delForm))
   }
   
   def auth = Action {implicit request =>
@@ -31,7 +53,6 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
       },
       login => {
         val estaLogado = UsuarioDAO.autenticar(db,login)
-       // val confAdm = UsuarioDAO.confAdm(db,login)
         if(estaLogado){
           if(login.email == "admin@carta.com"){
            Redirect("/adm").withSession("cartas" -> login.email)
@@ -45,10 +66,34 @@ class LoginController @Inject()(db: Database, cc: ControllerComponents)
       }
     )
   }
+  def updateUsu = Action {implicit request =>
+    upForm.bindFromRequest.fold(
+      formWithErrors => {
+        println(formWithErrors)
+        BadRequest(views.html.usuUp(formWithErrors))
+      },
+      updateUsu => {
+        UsuarioDAO.updateUsu(db,updateUsu)
+        Redirect("/")
+      }
+    )
+  }
+  
+  def deleteUsu = Action {implicit request =>
+    delForm.bindFromRequest.fold(
+      formWithErrors => {
+        println(formWithErrors)
+        BadRequest(views.html.usuDel(formWithErrors))
+      },
+      deleteUsu => {
+        GamesDAO.deleteUsu(db,deleteUsu)
+        Redirect("/")
+      }
+    )
+  }
 
   def logout = Action {implicit request =>
     Redirect("/").withSession(request.session - "cartas")
   }
   
 }
-

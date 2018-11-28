@@ -1,6 +1,5 @@
-@(dForm: Form[Update])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@(dForm: Form[Delete])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @import helper._
-@main("Atualizar Carta - Natal Solidário 2018") {
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -23,17 +22,9 @@
 			</nav>
 
 			<div class="header-form">
-@helper.form(action = routes.CartaController.update()) {
-  
+@helper.form(action = routes.LoginController.deleteUsu()) {
   @CSRF.formField
   @helper.inputText(dForm("id"))
-  @helper.inputText(dForm("nome")) 
-  @helper.inputText(dForm("sexo")) 
-  @helper.inputText(dForm("idade")) 
-  @helper.inputText(dForm("tamRoupa")) 
-  @helper.inputText(dForm("tamSap")) 
-  @helper.inputText(dForm("pedido")) 
-  @helper.inputText(dForm("resp"))
   <button type="submit">Send</button>
 }
 @if(dForm.hasGlobalErrors) {
@@ -42,4 +33,9 @@
     <li>@error.format</li>
   }
   </ul>
+}
+</div>
+		</div>
+	</body>
+</html>
 }
