@@ -22,18 +22,19 @@
             <ul>
                 <li><a href=>Suas Cartas</a></li>
                 <li><a href=@(routes.HomeController.index)>Logout</a></li>
-            </ul>
+            </ul> 
         </div>
     </nav>
     <div class="link">
         <div>
             <ul>
-                <li><a href="#">Cadastrar usuário</a></li>
-                <li><a href="#">Cadastrar carta</a></li>
-                <li><a href="#">Apagar usuário</a></li>
-                <li><a href="#">Apagar carta</a></li>
-                <li><a href="#">Update carta</a></li>
-                <li><a href="#">Lista</a></li>
+                <li><a href=@(routes.HomeController.index)>Cadastrar usuário</a></li>
+                <li><a href=@(routes.CartaController.formcarta)>Cadastrar carta</a></li>
+                <li><a href=@(routes.CartaController.formDel)>Apagar usuário</a></li>
+                <li><a href=@(routes.CartaController.formDel)>Apagar carta</a></li>
+                <li><a href=@(routes.CartaController.formup)>Update carta</a></li>
+                <li><a href=@(routes.CartaController.formAdo)>Distribuir carta</a></li>
+                <li><a href=@(routes.CartaController.lista)>Lista</a></li>
             </ul>
         </div>
     </div>

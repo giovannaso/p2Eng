@@ -1,5 +1,35 @@
 @(dForm: Form[Adotar])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@import helper._
+@main("Cadastro Carta - Natal Solidário 2018") {
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Login/Registrar</title>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	</head>
+	<body>
+		<div class="login-header">
+			<nav>
+				<div class="logo">
+					<a href="index.html">Natal Solidário 2018</a>
+				</div>
+				<div class="menu">
+					<ul>
+						<li><a href="#">Cartas</a></li>
+						<li><a href="#">Login</a></li>
+					</ul>
+				</div>
+			</nav>
 
+			<div class="header-form">
+				@helper.form(action = routes.CartaController.adotar()) {
+  
+  @CSRF.formField
+  @helper.inputText(dForm("id"))
+  @helper.inputText(dForm("resp"))
+  <button type="submit">Send</button>
+}
 @if(dForm.hasGlobalErrors) {
   <ul>
   @for(error <- dForm.globalErrors) {
@@ -8,13 +38,9 @@
   </ul>
 }
 
-@import helper._
+			</div>
+		</div>
+	</body>
+</html>
 
-@helper.form(action = routes.CartaController.adotar()) {
-  
-  @CSRF.formField
-  @helper.inputText(dForm("id"))
-  @helper.inputText(dForm("resp"))
-  <button type="submit">Send</button>
 }
-
