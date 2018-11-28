@@ -1,15 +1,15 @@
 @(dForm: Form[upUsu])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @import helper._
-@main("Atualizar Carta - Natal Solidário 2018") {
+@main("Cadastrar Usuario - Natal Solidário 2018") {
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<title>Login/Registrar</title>
+		<title>Cadasrrar Usu</title>
 		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	</head>
 	<body>
-		<div class="login-header">
+		<div class="fundopad">
 			<nav>
 				<div class="logo">
 					<a href="index.html">Natal Solidário 2018</a>
@@ -17,15 +17,16 @@
 				<div class="menu">
 					<ul>
 						<li><a href="#">Cartas</a></li>
-						<li><a href="#">Login</a></li>
+						<li><a href="#">Voltar</a></li>
 					</ul>
 				</div>
 			</nav>
-
-			<div class="header-form">
-@helper.form(action = routes.LoginController.updateUsu()) {
-  <!-- CROSS-SITE REQUEST FORGERY -->
-  @CSRF.formField
+			<div id="center">
+			  <div>
+				<p>
+					@helper.form(action = routes.LoginController.updateUsu()) {
+          
+          @CSRF.formField
   @helper.inputText(dForm("id"))
   @helper.inputText(dForm("nome"))
   @helper.inputText(dForm("email"))
@@ -40,6 +41,7 @@
   </ul>
 }
 </div>
+			</div>
 		</div>
 	</body>
 </html>
