@@ -37,6 +37,21 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
             "id" -> number
         )(Delete.apply)(Delete.unapply)
     )
+    
+  /**  
+    val upForm: Form[Update] = Form (
+        mapping(
+            "id" -> number,
+            "nome" -> text,
+            "sexo" -> text,
+            "idade" -> number,
+            "tamRoupa" -> text,
+            "tamSap" -> text,
+            "pedido" -> text,
+            "resp" -> text
+        )(Update.apply)(Update.unapply)
+    )
+    **/
   
   
    def create = Action {implicit request =>
@@ -61,7 +76,7 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
       },
       delete => {
         CartaDAO.delete(db,delete)
-        Redirect("/cartas")
+        Redirect("/carta")
       }
     )
   }
@@ -95,11 +110,11 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   def formup = Action {implicit request =>
     Ok(views.html.cartaupdate(form))
   }
-  
-  def fordel = Action {implicit request =>
-    Ok(views.html.cartaDel(form))
-  }
   */
+  def formDel = Action {implicit request =>
+    Ok(views.html.cartaDel(delForm))
+  }
+  
   
    def lista = Action {
     val list = MutableList[Carta]()

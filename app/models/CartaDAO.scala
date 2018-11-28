@@ -32,7 +32,7 @@ object CartaDAO{
     
      def delete(db: Database, c: Delete): Unit = {
         db.withConnection{ conn =>
-            val ps = conn.prepareStatement("delete from cartas where id= ?")
+            val ps = conn.prepareStatement("delete from carta where id= ?")
             ps.setInt(1,c.id)
             ps.execute()
         }
