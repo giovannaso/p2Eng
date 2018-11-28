@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<title>Login/Registrar</title>
+		<title>Distribuir Carta</title>
 		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	</head>
 	<body>
-		<div class="login-header">
+		<div class="fundopad">
 			<nav>
 				<div class="logo">
 					<a href="index.html">Natal Solidário 2018</a>
@@ -17,13 +17,14 @@
 				<div class="menu">
 					<ul>
 						<li><a href="#">Cartas</a></li>
-						<li><a href="#">Login</a></li>
+						<li><a href="#">Voltar</a></li>
 					</ul>
 				</div>
 			</nav>
-
+			<div id="center">
+				<div class="cadastro">
 			<div class="header-form">
-				@helper.form(action = routes.CartaController.adotar()) {
+						@helper.form(action = routes.CartaController.adotar()) {
   
   @CSRF.formField
   @helper.inputText(dForm("id"))
@@ -39,8 +40,11 @@
 }
 
 			</div>
+			</div>
+		</div>
+		</div>
 		</div>
 	</body>
 </html>
-
 }
+
