@@ -32,8 +32,8 @@ Nela temos os seguintes campos:
 •	email_u (tipo VARCHAR, email do padrinho que irá presentear a criança),
 •	senha (tipo VARCHAR, senha de usuário do padrinho que irá presentear a criança)
 
-###### Script: 
-CREATE TABLE carta(
+#### Script: 
+``` CREATE TABLE carta( 
     id serial PRIMARY KEY,
     nome VARCHAR (60) NOT NULL,
     sexo VARCHAR (20) NOT NULL,
@@ -43,17 +43,19 @@ CREATE TABLE carta(
     pedido VARCHAR(100),
     resp VARCHAR (60)
 );
-CREATE TABLE usuario(
+
+    CREATE TABLE usuario(
     id serial PRIMARY KEY
     nome VARCHAR (60),
     email varchar(70) UNIQUE NOT NULL,
     senha varchar(80) NOT NULL
-);
+);```
+
 Situações:
 Originalmente o campo ‘tamsap’ era do tipo INT mas tivemos problemas apply e modificamos para o tipo VARCHAR, para isso tentamos usar os comandos 
-•	“alter table carta alter column tamsap VARCHAR”
-•	“alter table carta modify column tamsap VARCHAR”
-•	“alter table carta modify tamsap VARCHAR”
+``` alter table carta alter column tamsap VARCHAR ```
+```alter table carta modify column tamsap VARCHAR ```
+```alter table carta modify tamsap VARCHAR ```
 Mas nenhum comando funcionou, decidimos utilizar o comando “drop table” e refazer a tabela.
 
 
@@ -76,12 +78,12 @@ de forma com que eles só trabalhassem com os campos necessários (como por exem
 
 ## Views
  O projeto contou com 10 telas, sendo elas categorizadas em:
-    ###### Exibição
+#### Exibição
         Index - Pagina inicial
         Adm - Lista de funções do Administrador
         listaCriancas - Exibição da lista de cartas
     
-    ###### Formularios
+#### Formularios
         adotar - Definir o padrinho de uma criança
         cadastrarUsu -  Cadastrar Usuário
         cartaDel - Deletar carta
