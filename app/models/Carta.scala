@@ -4,6 +4,8 @@ case class Carta(id: Int, nome: String, sexo: String, idade: Int, tamRoupa: Stri
  
 case class Update(id: Int, nome: String, sexo: String, idade: Int, tamRoupa: String, tamSap: String, pedido: String, resp: String)
 
+case class Adotar(id: Int, resp: String)
+
 case class Delete(id:Int)
 
 
@@ -19,6 +21,10 @@ object Carta{
     
     def attCarta(id: Int, nome: String, sexo: String, idade: Int, tamRoupa: String, tamSap: String, pedido: String, resp: String): Update = {
         return new Update(id, nome, sexo, idade, tamRoupa, tamSap, pedido, resp)
+    }
+    
+    def adotarCarta(id: Int, resp: String): Update = {
+        return new Adotar(id, resp)
     }
     
     def delCarta(id: Int): Delete = {

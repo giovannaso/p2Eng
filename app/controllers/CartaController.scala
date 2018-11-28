@@ -92,6 +92,19 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
       }
     )
   }
+  
+  def adotar = Action {implicit request =>
+    delForm.bindFromRequest.fold(
+      formWithErrors => {
+        println(formWithErrors)
+        BadRequest(views.html.cartaAdo(formWithErrors))
+      },
+      adotar => {
+        CartaDAO.adotar(db,adotar)
+        Redirect("/carta")
+      }
+    )
+  }
  
   def formcarta = Action {implicit request =>
     Ok(views.html.cartaForm(form))
@@ -105,6 +118,9 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     Ok(views.html.cartaDel(delForm))
   }
   
+  def formDel = Action {implicit request =>
+    Ok(views.html.cartaAdo(adoForm))
+  }
   
    def lista = Action {
     val list = MutableList[Carta]()

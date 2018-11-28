@@ -81,4 +81,13 @@ object CartaDAO{
         }
     }
     
+    def adotar(db: Database, disc: Update): Unit = {
+        db.withConnection{ conn =>
+            val ps = conn.prepareStatement("update carta set resp= ? where id= ?")
+            ps.setString(1,disc.resp)
+            ps.setInt(2,disc.id)
+            ps.execute()
+        }
+    }
+    
 }
