@@ -1,20 +1,20 @@
 #p2
 Carlos Kalam Siu, Giovanna Silva de Oliveira e Felipe Shitinoe
 
-Prova 2 - Play Framework
+# Prova 2 - Play Framework
 
-Problematização:
+## Problematização:
 As sacolinhas de Natal ou Sacolinha do bem são formas de ajudar aquelas pessoas que mais necessitam, seja com dinheiro para ajudar com os custos, alimentos ou até mesmo com brinquedos para trazer sorrisos para as crianças.
 O nosso projeto tem como foco as crianças, dessa forma os voluntários ficam responsáveis por uma ou mais criança, dessa forma eles se tornam padrinhos. 
 As sacolinhas podem ser montadas de várias formas, como uma lista de itens contendo brinquedos, materiais escolares, higiene, um valor monetário ou apenas um desses itens, dependendo muito da organizadora.
 
-O Projeto:
+## O Projeto:
 O nosso projeto se baseia nas sacolinhas de Natal, justamente por estarmos proximos dessa data comemorativa, utilizando o modelo MVC através da Play Framework. Primeiramente levantamos os componentes de uma sacolinha de natal e estruturamos
 o banco de dados.
 
 
 
-Banco de Dados
+## Banco de Dados
 Na tabela Carta ficará armazenada informações das cartas que serão designadas paras as crianças. 
 Nela temos os seguintes campos: 
 •	id (identificador numérico),
@@ -32,7 +32,7 @@ Nela temos os seguintes campos:
 •	email_u (tipo VARCHAR, email do padrinho que irá presentear a criança),
 •	senha (tipo VARCHAR, senha de usuário do padrinho que irá presentear a criança)
 
-Script: 
+###### Script: 
 CREATE TABLE carta(
     id serial PRIMARY KEY,
     nome VARCHAR (60) NOT NULL,
@@ -58,13 +58,13 @@ Mas nenhum comando funcionou, decidimos utilizar o comando “drop table” e re
 
 
 
-Controllers
+## Controllers
  O Projeto conta com 3 Controllers:
     CartaController - responsável por gerenciar as requisições do usuário referentes a Carta. Contem os métodos que serão executados.
     HomeController - responsável pelo index.
     LoginController - Assim como o CartaController é responsável pelas requisições, mas referentes ao Login e gerenciamento de Usuários.
 
-Models
+## Models
  Conta com 4 modelos, responsáveis pela validação e manipulação de dados:
     Carta.scala
     CartaDAO.scala
@@ -74,14 +74,14 @@ Tendo em vista que diferentes requisições trabalham com diferentes campos do b
 de forma com que eles só trabalhassem com os campos necessários (como por exemplo o delete trabalhar apenas com o ID, ou o cadastro não solicitar o ID, já que este
 é serial.)
 
-Views
+## Views
  O projeto contou com 10 telas, sendo elas categorizadas em:
-    Exibição
+    ###### Exibição
         Index - Pagina inicial
         Adm - Lista de funções do Administrador
         listaCriancas - Exibição da lista de cartas
     
-    Formularios
+    ###### Formularios
         adotar - Definir o padrinho de uma criança
         cadastrarUsu -  Cadastrar Usuário
         cartaDel - Deletar carta
