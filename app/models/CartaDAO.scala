@@ -65,4 +65,20 @@ object CartaDAO{
     }
         list
     }
+    
+    def update(db: Database, disc: Update): Unit = {
+        db.withConnection{ conn =>
+            val ps = conn.prepareStatement("update carta set nome= ?, sexo= ?, idade= ?,tamRoupa= ?,tamSap= ?,pedido= ?,resp= ? where id= ?")
+           ps.setString(1,disc.nome)
+            ps.setString(2,disc.sexo)
+            ps.setInt(3,disc.idade)
+            ps.setString(4,disc.tamRoupa)
+            ps.setString(5,disc.tamSap)
+            ps.setString(6,disc.pedido)
+            ps.setString(7,disc.resp)
+            ps.setInt(8,disc.id)
+            ps.execute()
+        }
+    }
+    
 }

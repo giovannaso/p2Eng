@@ -38,7 +38,6 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
         )(Delete.apply)(Delete.unapply)
     )
     
-  /**  
     val upForm: Form[Update] = Form (
         mapping(
             "id" -> number,
@@ -51,7 +50,6 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
             "resp" -> text
         )(Update.apply)(Update.unapply)
     )
-    **/
   
   
    def create = Action {implicit request =>
@@ -82,35 +80,27 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   
-    /**
   def update = Action {implicit request =>
-    form.bindFromRequest.fold(
+    upForm.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)
-        BadRequest(views.html.cartaupdate(formWithErrors))
+        BadRequest(views.html.cartaUp(formWithErrors))
       },
-      carta => {
-        cartaDAO.update(db,carta)
+      update => {
+        CartaDAO.update(db,update)
         Redirect("/carta")
       }
     )
   }
-  
-  def info(id: Int) = Action {
-    val carta = cartaDAO.getcarta(db,id)
-    Ok(views.html.info(carta))
-  }
-  */
  
   def formcarta = Action {implicit request =>
     Ok(views.html.cartaForm(form))
   }
   
-  /**
   def formup = Action {implicit request =>
-    Ok(views.html.cartaupdate(form))
+    Ok(views.html.cartaUp(upForm))
   }
-  */
+  
   def formDel = Action {implicit request =>
     Ok(views.html.cartaDel(delForm))
   }
