@@ -235,3 +235,9 @@ table {
 .cadastro{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+
+.cadastro p{
+	color: #fff;
+	font-family: 'Pacifico', cursive;
+	font-size: 24px;
+}
