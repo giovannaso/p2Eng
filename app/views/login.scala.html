@@ -24,7 +24,7 @@
 			  <div>
 				<p>
 					@helper.form(action = routes.LoginController.auth()) {
-          <!-- CROSS-SITE REQUEST FORGERY -->
+          
           @CSRF.formField                     
          <div class="input">
           @helper.inputText(dForm("email")) 

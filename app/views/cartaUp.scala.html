@@ -1,6 +1,6 @@
 @(dForm: Form[Update])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @import helper._
-@main("Atualizar Carta - Natal Solidário 2018") {
+@main("Update Carta - Natal Solidário 2018") {
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -23,23 +23,28 @@
 			</nav>
 
 			<div class="header-form">
-@helper.form(action = routes.CartaController.update()) {
-  
+				@helper.form(action = routes.CartaController.create()) {
   @CSRF.formField
-  @helper.inputText(dForm("id"))
-  @helper.inputText(dForm("nome")) 
-  @helper.inputText(dForm("sexo")) 
-  @helper.inputText(dForm("idade")) 
-  @helper.inputText(dForm("tamRoupa")) 
-  @helper.inputText(dForm("tamSap")) 
-  @helper.inputText(dForm("pedido")) 
-  @helper.inputText(dForm("resp"))
-  <button type="submit">Send</button>
+      @helper.inputText(dForm("id"))
+      @helper.inputText(dForm("nome")) 
+      @helper.inputText(dForm("sexo")) 
+      @helper.inputText(dForm("idade")) 
+      @helper.inputText(dForm("tamRoupa")) 
+      @helper.inputText(dForm("tamSap")) 
+      @helper.inputText(dForm("pedido")) 
+      @helper.inputText(dForm("resp"))
+   <button type="submit">Send</button>
 }
+
 @if(dForm.hasGlobalErrors) {
   <ul>
   @for(error <- dForm.globalErrors) {
     <li>@error.format</li>
   }
   </ul>
+}
+			</div>
+		</div>
+	</body>
+</html>
 }

@@ -18,10 +18,15 @@ POST    /CartaAdo                   controllers.CartaController.adotar
 
 # GET     /usuario                    controllers.CartaController.form
 # POST    /usuario                    controllers.CartaController.cadastro
+GET     /usuario/update             controllers.LoginController.formUp
+GET     /usuario/delete             controllers.LoginController.formDel
+POST    /usuarioUpdate              controllers.LoginController.updateUsu
+POST    /usuarioDelete              controllers.LoginController.deleteUsu
 
 GET     /login                      controllers.LoginController.form
 POST    /login                      controllers.LoginController.auth
 POST    /logout                     controllers.LoginController.logout
+
 
 
 # Map static resources from the /public folder to the /assets URL path

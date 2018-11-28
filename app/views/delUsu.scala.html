@@ -1,5 +1,6 @@
 @(dForm: Form[Delete])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 @import helper._
+@main("Deletar Usuario - Natal Solidário 2018") {
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -15,17 +16,19 @@
 				</div>
 				<div class="menu">
 					<ul>
-						<li><a href="#">Cartas</a></li>
-						<li><a href="#">Login</a></li>
+						<li><href=@(routes.CartaController.lista)>Cartas</a></li>
+						<li><a href="#">Administrador</a></li>
 					</ul>
 				</div>
 			</nav>
+
 			<div class="header-form">
-@helper.form(action = routes.LoginController.deleteUsu()) {
+			@helper.form(action = routes.LoginController.deleteUsu()) {
   @CSRF.formField
   @helper.inputText(dForm("id"))
   <button type="submit">Send</button>
 }
+
 @if(dForm.hasGlobalErrors) {
   <ul>
   @for(error <- dForm.globalErrors) {
@@ -33,8 +36,9 @@
   }
   </ul>
 }
-</div>
+			</div>
 		</div>
 	</body>
 </html>
 }
+

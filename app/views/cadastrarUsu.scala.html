@@ -1,6 +1,6 @@
 @(dForm: Form[UpdateUsu])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
-
 @import helper._
+@main("Atualizar Carta - Natal Solidário 2018") {
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -21,15 +21,17 @@
 					</ul>
 				</div>
 			</nav>
+
 			<div class="header-form">
 @helper.form(action = routes.LoginController.updateUsu()) {
+  <!-- CROSS-SITE REQUEST FORGERY -->
   @CSRF.formField
   @helper.inputText(dForm("id"))
   @helper.inputText(dForm("nome"))
   @helper.inputText(dForm("email"))
   @helper.inputPassword(dForm("senha"))
   <button type="submit">Send</button>
-}
+}			
 @if(dForm.hasGlobalErrors) {
   <ul>
   @for(error <- dForm.globalErrors) {
