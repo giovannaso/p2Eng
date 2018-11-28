@@ -9,6 +9,7 @@ import models.CartaDAO
 import models.Carta
 import models.Update
 import models.Delete
+import models.Adotar
 import play.api.data._
 import play.api.data.Forms._
 
@@ -49,6 +50,13 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
             "pedido" -> text,
             "resp" -> text
         )(Update.apply)(Update.unapply)
+    )
+    
+    val adoForm: Form[Adotar]= Form (
+        mapping(
+            "id" -> number,
+            "resp" -> text
+        )(Adotar.apply)(Adotar.unapply)
     )
   
   
@@ -94,10 +102,10 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
   }
   
   def adotar = Action {implicit request =>
-    delForm.bindFromRequest.fold(
+    adoForm.bindFromRequest.fold(
       formWithErrors => {
         println(formWithErrors)
-        BadRequest(views.html.cartaAdo(formWithErrors))
+        BadRequest(views.html.adotar(formWithErrors))
       },
       adotar => {
         CartaDAO.adotar(db,adotar)
@@ -118,8 +126,8 @@ class CartaController @Inject()(db: Database, cc: ControllerComponents)
     Ok(views.html.cartaDel(delForm))
   }
   
-  def formDel = Action {implicit request =>
-    Ok(views.html.cartaAdo(adoForm))
+  def formAdo = Action {implicit request =>
+    Ok(views.html.adotar(adoForm))
   }
   
    def lista = Action {

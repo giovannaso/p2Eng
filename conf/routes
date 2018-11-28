@@ -12,6 +12,8 @@ GET     /carta/update                controllers.CartaController.formup
 GET     /carta/delete                controllers.CartaController.formDel
 POST    /CartaUp                    controllers.CartaController.update
 POST    /CartaDel                   controllers.CartaController.delete
+GET     /carta/adotar              controllers.CartaController.formAdo
+POST    /CartaAdo                   controllers.CartaController.adotar
 
 # GET     /usuario                    controllers.CartaController.form
 # POST    /usuario                    controllers.CartaController.cadastro

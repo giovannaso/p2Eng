@@ -23,7 +23,7 @@ object Carta{
         return new Update(id, nome, sexo, idade, tamRoupa, tamSap, pedido, resp)
     }
     
-    def adotarCarta(id: Int, resp: String): Update = {
+    def adotarCarta(id: Int, resp: String): Adotar = {
         return new Adotar(id, resp)
     }
     
